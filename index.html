@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaoneng Tan Custom Calculator</title>
+</head>
+<body>
+    <div id="calcSec">
+        <div id="input">
+            <ul>
+                <li><h1>Tip Calculator</h1></li>
+                <li>
+                    <label for="billCost">Bill: </label><br>
+                    <input id="billCost" type="number">
+                </li>
+                <li>
+                    <label for="percentageCost">Percentage Tax: </label><br>
+                    <input id="percentageCost" type="number">
+                </li>
+                <li>
+                    <label for="peopleNumber">Number of People: </label><br>
+                    <input id="peopleNumber" type="number">
+                </li>
+            </ul>
+        </div>
+        <div id="output">
+            <!--Tip Calculator Output-->
+        </div>
+        <dt></dt>
+    </div>
+    <div id="calcSec">
+        <div id="pythInput">
+            <ul>
+                <li><h1>Pythagorean Theorem Calculator</h1></li>
+                <li>
+                    <label for="a">Variable A: </label><br>
+                    <input id="a" type="number">
+                </li>
+                <li>
+                    <label for="b">Variable B: </label><br>
+                    <input id="b" type="number">
+                </li>
+                <li>
+                    <label for="c">Variable C: </label><br>
+                    <input id="c" type="number">
+                </li>
+            </ul>
+        </div>
+        <div id="pythOutput">
+            <!--Pythagorean Theorem Output-->
+        </div>
+        <dt></dt>
+    </div>
+</body>
+<script>
+    //Tip Calculator
+    const output=document.querySelector("#output")
+    const bill=document.querySelector("#billCost")
+    const percentage=document.querySelector("#percentageCost")
+    const people=document.querySelector("#peopleNumber")
+
+    billCost.addEventListener('input', calculateTip)
+    percentageCost.addEventListener('input', calculateTip)
+    peopleNumber.addEventListener('input', calculateTip)
+
+    function calculateTip(){
+        const billCost=parseFloat(bill.value)
+        const percentageCost=parseFloat(percentage.value)
+        const peopleNumber=parseInt(people.value)
+        
+        const tip=((billCost*percentageCost)/100)
+        const totCost=(billCost+tip).toFixed(2)
+        const totPerPerson=((billCost+tip)/peopleNumber).toFixed(2)
+        output.innerHTML=
+        `<ul>
+            <li><h2>Tip: ${tip}</h2></li>
+            <li><h2>Total Cost: ${totCost}</h2></li>
+            <li><h2>Total Per Person: ${totPerPerson}</h2></li>
+        </ul>
+        `
+    }
+    calculateTip()
+    //Pythagorean Theorum
+    const pythOutput=document.querySelector("#pythOutput")
+    const aSel=document.querySelector("#a")
+    const bSel=document.querySelector("#b")
+    const cSel=document.querySelector("#c")
+
+    a.addEventListener('input', calculatePythTheorum)
+    b.addEventListener('input', calculatePythTheorum)
+    c.addEventListener('input', calculatePythTheorum)
+
+    function calculatePythTheorum(){
+        const a=parseFloat(aSel.value)
+        const b=parseFloat(bSel.value)
+        const c=parseFloat(cSel.value)
+        
+        const output1=(-b+Math.sqrt(b**2-(4*a*c)))/(2*a)
+        const output2=(-b-Math.sqrt(b**2-(4*a*c)))/(2*a)
+        pythOutput.innerHTML=
+        `<ul>
+            <li><h2>Positive Output: ${output1}</h2></li>
+            <li><h2>Negative Output: ${output2}</h2></li>
+        </ul>
+        `
+    }
+    calculatePythTheorum()
+</script>
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+    div#calcSec{
+        border-bottom-width: 1.5px;
+        border-bottom-style: solid;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 2em 1em 2em;
+    }
+    h2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+</html>
