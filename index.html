@@ -6,52 +6,85 @@
     <title>Chaoneng Tan Custom Calculator</title>
 </head>
 <body>
-    <div id="calcSec">
-        <div id="input">
-            <ul>
-                <li><h1>Tip Calculator</h1></li>
-                <li>
-                    <label for="billCost">Bill: </label><br>
-                    <input id="billCost" type="number">
-                </li>
-                <li>
-                    <label for="percentageCost">Percentage Tax: </label><br>
-                    <input id="percentageCost" type="number">
-                </li>
-                <li>
-                    <label for="peopleNumber">Number of People: </label><br>
-                    <input id="peopleNumber" type="number">
-                </li>
-            </ul>
+    <section id="nav">
+        <ul>
+            <li><h1><a href="#">Custom Calculator</a></h1></li>
+            <li>
+                <ul>
+                    <li><a href="#tip">Tip</a></li>
+                    <li><a href="#quadratic">Quadratic Formula</a></li>
+                    <li><a href="#pythagorean">Pythagorean Theorem</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section id="tip">
+        <div id="calcSec">
+            <div id="input">
+                <ul>
+                    <li><h1>Tip Calculator</h1></li>
+                    <li>
+                        <label for="billCost">Bill: </label><br>
+                        <input id="billCost" type="number">
+                    </li>
+                    <li>
+                        <label for="percentageCost">Percentage Tax: </label><br>
+                        <input id="percentageCost" type="number">
+                    </li>
+                    <li>
+                        <label for="peopleNumber">Number of People: </label><br>
+                        <input id="peopleNumber" type="number">
+                    </li>
+                </ul>
+            </div>
+            <div id="output">
+                <!--Tip Calculator Output-->
+            </div>
         </div>
-        <div id="output">
-            <!--Tip Calculator Output-->
+    </section>
+    <section id="quadratic">
+        <div id="calcSec">
+            <div id="quadInput">
+                <ul>
+                    <li><h1>Quadratic Formula Calculator</h1></li>
+                    <li>
+                        <label for="a">Variable A: </label><br>
+                        <input id="a" type="number">
+                    </li>
+                    <li>
+                        <label for="b">Variable B: </label><br>
+                        <input id="b" type="number">
+                    </li>
+                    <li>
+                        <label for="c">Variable C: </label><br>
+                        <input id="c" type="number">
+                    </li>
+                </ul>
+            </div>
+            <div id="quadOutput">
+                <!--Quadratic Formula Output-->
+            </div>
         </div>
-        <dt></dt>
-    </div>
-    <div id="calcSec">
-        <div id="pythInput">
-            <ul>
-                <li><h1>Pythagorean Theorem Calculator</h1></li>
-                <li>
-                    <label for="a">Variable A: </label><br>
-                    <input id="a" type="number">
-                </li>
-                <li>
-                    <label for="b">Variable B: </label><br>
-                    <input id="b" type="number">
-                </li>
-                <li>
-                    <label for="c">Variable C: </label><br>
-                    <input id="c" type="number">
-                </li>
-            </ul>
+    </section>
+    <section id="pythagorean">
+        <div id="calcSec">
+            <div id="pythInput">
+                <ul>
+                    <li><h1>Pythagorean Theorem Calculator</h1></li>
+                    <li><input id="pythA" type="number" placeholder="a">^2+<input id="pythB" type="number" placeholder="b">^2=<input id="pythC" type="number" placeholder="c"></li>
+                    <li><button onclick="calculateA();">Calculate A</button><button onclick="calculateB();">Calculate B</button><button onclick="calculateC();">Calculate C</button></li>
+                </ul>
+                <div id="pythOutput">
+                    <!--Pythagorean Theorem Output-->
+                </div>
+            </div>
         </div>
-        <div id="pythOutput">
-            <!--Pythagorean Theorem Output-->
-        </div>
-        <dt></dt>
-    </div>
+    </section>
+    <section id="footer">
+        <footer>
+            <p>By Chaoneng Tan~</p>
+        </footer>
+    </section>
 </body>
 <script>
     //Tip Calculator
@@ -81,33 +114,82 @@
         `
     }
     calculateTip()
-    //Pythagorean Theorum
-    const pythOutput=document.querySelector("#pythOutput")
+    //Quadratic Formula
+    const quadOutput=document.querySelector("#quadOutput")
     const aSel=document.querySelector("#a")
     const bSel=document.querySelector("#b")
     const cSel=document.querySelector("#c")
 
-    a.addEventListener('input', calculatePythTheorum)
-    b.addEventListener('input', calculatePythTheorum)
-    c.addEventListener('input', calculatePythTheorum)
+    a.addEventListener('input', calculateQuadFormula)
+    b.addEventListener('input', calculateQuadFormula)
+    c.addEventListener('input', calculateQuadFormula)
 
-    function calculatePythTheorum(){
+    function calculateQuadFormula(){
         const a=parseFloat(aSel.value)
         const b=parseFloat(bSel.value)
         const c=parseFloat(cSel.value)
         
         const output1=(-b+Math.sqrt(b**2-(4*a*c)))/(2*a)
         const output2=(-b-Math.sqrt(b**2-(4*a*c)))/(2*a)
-        pythOutput.innerHTML=
+        quadOutput.innerHTML=
         `<ul>
             <li><h2>Positive Output: ${output1}</h2></li>
             <li><h2>Negative Output: ${output2}</h2></li>
         </ul>
         `
     }
-    calculatePythTheorum()
+    calculateQuadFormula()
+    //Pythagorean Theorem
+    const pythInput=document.querySelector("#pythOutput")
+    const pythASel=document.querySelector("#pythA")
+    const pythBSel=document.querySelector("#pythB")
+    const pythCSel=document.querySelector("#pythC")
+
+    console.log(pythagoreanA)
+    function calculateA(){
+        const pythagoreanA=parseFloat(pythASel.value)
+        const pythagoreanB=parseFloat(pythBSel.value)
+        const pythagoreanC=parseFloat(pythCSel.value)
+        const aVal=Math.sqrt((pythagoreanC**2)-(pythagoreanB**2))
+        updateValue(aVal,"a")
+    }
+    function calculateB(){
+        const pythagoreanA=parseFloat(pythASel.value)
+        const pythagoreanB=parseFloat(pythBSel.value)
+        const pythagoreanC=parseFloat(pythCSel.value)
+        const bVal=Math.sqrt((pythagoreanC**2)-(pythagoreanA**2))
+        updateValue(bVal,"b")
+    }
+    function calculateC(){
+        const pythagoreanA=parseFloat(pythASel.value)
+        const pythagoreanB=parseFloat(pythBSel.value)
+        const pythagoreanC=parseFloat(pythCSel.value)
+        const cVal=Math.sqrt((pythagoreanA**2)+(pythagoreanB**2))
+        updateValue(cVal,"c")
+    }
+    function updateValue(value, place){
+        if (place=="a"){
+            pythInput.innerHTML=
+            `
+            <h2>Value A: ${value}</h2>
+            `
+        }
+        if (place=="b"){
+            pythInput.innerHTML=
+            `
+            <h2>Value B: ${value}</h2>
+            `
+        }
+        if (place=="c"){
+            pythInput.innerHTML=
+            `
+            <h2>Value C: ${value}</h2>
+            `
+        }
+    }
 </script>
 <style>
+    /*General*/
     html{
         scroll-behavior: smooth;
     }
@@ -128,6 +210,46 @@
     h2{
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+    /*Nav*/
+    section#nav{
+        border-bottom-width: 1.5px;
+        border-bottom-style: solid;
+    }
+    section#nav ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0;
+        align-items: center;
+        margin-right: 1em;
+        padding: 0 0 0 1em;
+    }
+    section#nav ul li{
+        padding-left: 14px;
+    }
+    section#nav a{
+        text-decoration: none;
+        color: black;
+    }
+    /*Quadratic Formula*/
+    div#quadOutput{
+        display: flex;
+        align-items: center;
+    }
+    /*Pythagorean Theorem*/
+    div#pythInput input{
+        width: 6em;
+    }
+    button{
+        margin: 1em 1em 0 1em;
+        padding: .5em;
+    }
+    /*Footer*/
+    footer{
+        display: flex;
+        justify-content: flex-end;
         align-items: center;
     }
 </style>
